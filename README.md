@@ -1,3 +1,2 @@
-Developed by :- Mrityunjay Parmar
-             :- Makrand Bhatt
+Developed by :- Mrityunjay Parmar & Makrand Bhatt
 
