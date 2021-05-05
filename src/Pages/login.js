@@ -7,10 +7,10 @@ import {
 	TextField,
 	Typography,
 } from "@material-ui/core";
-import logo from "../media/logo.png";
-import firebase from "../firebase";
+import logo from "../media/logo_blue.png";
+import { firebaseAuth, firestore } from "../firebase";
 
-class login extends Component {
+class Login extends Component {
 	constructor(props) {
 		super(props);
 
@@ -51,16 +51,14 @@ class login extends Component {
 		});
 
 		if (valid_data) {
-			firebase
-				.firestore()
+			firestore
 				.collection("USERS")
 				.where("email", "==", this.state.email)
 				.where("IsAdmin", "==", true)
 				.get()
 				.then((querySnapshot) => {
 					if (!querySnapshot.empty) {
-						firebase
-							.auth()
+						firebaseAuth
 							.signInWithEmailAndPassword(this.state.email, this.state.password)
 							.then((res) => {
 								this.props.history.replace("/");
@@ -147,4 +145,5 @@ class login extends Component {
 	}
 }
 
-export default login;
+export default Login;
+
